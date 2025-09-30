@@ -11,6 +11,7 @@ import type { Launch } from "@/graphql/types";
  * Returns the value rounded to 2 decimal places.
  */
 export const estimateEnergy = (launch: Launch) => {
+  // TODO: Many rockets have the same mass and I can't find a value for fuel mass in the API.
   if (!launch?.rocket?.rocket?.mass?.kg) return null;
 
   const rocketMassKg = launch.rocket?.rocket?.mass?.kg;
