@@ -1,19 +1,7 @@
-import { useEffect, useState } from "react";
-
-import { Button } from "./components/ui/button";
+import { LaunchList } from "./components/LaunchList";
 
 function App() {
-  const x = useState();
-
-  useEffect(() => {
-    console.log(x);
-  }, []);
-
-  return (
-    <p>
-      <Button>Click on the Vite and React logos to learn more</Button>
-    </p>
-  );
+  return <LaunchList />;
 }
 
 export default App;
