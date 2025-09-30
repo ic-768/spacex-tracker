@@ -1,7 +1,11 @@
-import { LaunchList } from "./components/LaunchList";
+import { LaunchList } from "./components/launch-list/launch-list";
 
 function App() {
-  return <LaunchList />;
+  return (
+    <div className="p-8">
+      <LaunchList />;
+    </div>
+  );
 }
 
 export default App;
