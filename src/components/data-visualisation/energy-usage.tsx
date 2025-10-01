@@ -16,7 +16,7 @@ interface EnergyUsage {
   energy: number;
 }
 
-export const EnergyUsageBar = ({ data }: { data: EnergyUsage[] }) => (
+export const EnergyUsage = ({ data }: { data: EnergyUsage[] }) => (
   <div className="flex-1">
     <h3 className="text-lg font-semibold mb-2">Energy Usage</h3>
     <ResponsiveContainer width="100%" height={300}>

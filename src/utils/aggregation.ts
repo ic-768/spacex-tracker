@@ -54,9 +54,7 @@ export const getEnergyByRocket = (launches: Launch[]) => {
 
   launches.forEach((launch) => {
     const rocket = launch.rocket.rocket_name;
-    rocketMap[rocket] = Number(
-      (rocketMap[rocket] || 0) + estimateEnergy(launch).toFixed(2),
-    );
+    rocketMap[rocket] = (rocketMap[rocket] || 0) + estimateEnergy(launch);
   });
 
   return Object.entries(rocketMap).map(([name, energy]) => ({ name, energy }));

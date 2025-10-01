@@ -7,7 +7,7 @@ import { useState } from "react";
 export const useSelection = () => {
   const [selection, setSelection] = useState<string[]>([]);
 
-  const onSelect = (id: string) => {
+  const onToggleSelect = (id: string) => {
     if (selection.includes(id)) {
       setSelection(selection.filter((i) => i !== id));
     } else {
@@ -20,7 +20,7 @@ export const useSelection = () => {
   return {
     selection,
     setSelection,
-    onSelect,
+    onToggleSelect,
     isSelected,
   };
 };
