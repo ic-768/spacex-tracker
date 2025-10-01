@@ -22,7 +22,7 @@ export const LaunchCard = ({
 }: LaunchCardProps) => (
   <Card
     onClick={() => onSelect(launch.id)}
-    className={`relative cursor-pointer transition-all duration-200 hover:shadow-lg ${
+    className={`relative gap-1 cursor-pointer transition-all duration-200 hover:shadow-lg ${
       isSelected
         ? "border-blue-500 bg-blue-50 shadow-md ring-2 ring-blue-200"
         : "hover:border-gray-300"

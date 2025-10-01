@@ -14,7 +14,7 @@ export const estimateEnergy = (launch: Launch) => {
   if (!launch?.rocket?.rocket?.mass?.kg) return 0;
 
   // TODO: Many rockets have the same mass and I can't find a value for fuel mass in the API.
-  // I'm adding this randomizer just for demo purposes
+  // I'm adding this randomizer just for demo purposes to make the charts more interesting
   let rocketMassKg = launch.rocket?.rocket?.mass?.kg;
   if (rocketMassKg === 549054) rocketMassKg *= Math.random();
 

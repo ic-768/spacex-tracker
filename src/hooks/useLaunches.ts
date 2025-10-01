@@ -1,7 +1,13 @@
 import { useQuery } from "@apollo/client/react";
 
 import type { GetLaunchesData } from "@/graphql/types";
-import { aggregateEnergy, aggregateMass } from "@/utils/aggregation";
+import {
+  aggregateEnergy,
+  aggregateMass,
+  countLaunchesByRocket,
+  countLaunchesByYear,
+  getEnergyByRocket,
+} from "@/utils/aggregation";
 
 import { GET_LAUNCHES } from "../graphql/queries/launches";
 
@@ -19,21 +25,23 @@ export function useLaunches(limit = 20) {
   const launches = data?.launches ?? [];
   const { selection, setSelection, onSelect, isSelected } = useSelection();
 
-  const totalEnergy = aggregateEnergy(
-    launches.filter((launch) => selection.includes(launch.id)),
+  const selectedLaunches = launches.filter((launch) =>
+    selection.includes(launch.id),
   );
 
-  const totalPayloadMass = aggregateMass(
-    launches.filter((launch) => selection.includes(launch.id)),
-  );
+  const totalEnergy = aggregateEnergy(selectedLaunches);
+  const totalPayloadMass = aggregateMass(selectedLaunches);
+  const launchesByRocket = countLaunchesByRocket(selectedLaunches);
+  const launchesByYear = countLaunchesByYear(selectedLaunches);
+  const energyByRocket = getEnergyByRocket(selectedLaunches);
 
   return {
-    launchFetch: {
+    fetched: {
       launches,
       loading,
       error,
     },
-    launchSelection: {
+    selection: {
       isSelected,
       onSelect,
       setSelection,
@@ -41,6 +49,9 @@ export function useLaunches(limit = 20) {
     aggregatedStats: {
       totalEnergy,
       totalPayloadMass,
+      launchesByRocket,
+      launchesByYear,
+      energyByRocket,
     },
   };
 }

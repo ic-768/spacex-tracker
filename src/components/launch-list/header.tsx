@@ -9,7 +9,7 @@ interface LaunchHeaderProps {
 }
 
 export const LaunchHeader = ({ launch }: LaunchHeaderProps) => (
-  <CardHeader className="pb-3">
+  <CardHeader>
     <h3 className="text-lg font-semibold text-foreground mb-1 truncate">
       {launch.mission_name}
     </h3>

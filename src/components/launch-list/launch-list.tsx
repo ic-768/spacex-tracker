@@ -13,17 +13,15 @@ export function LaunchList({
   onSelect,
 }: LaunchListProps) {
   return (
-    <div className="flex flex-col gap-6">
-      <div className="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {launches.map((launch) => (
-          <LaunchCard
-            key={launch.id}
-            launch={launch}
-            isSelected={isSelected(launch.id)}
-            onSelect={onSelect}
-          />
-        ))}
-      </div>
+    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {launches.map((launch) => (
+        <LaunchCard
+          key={launch.id}
+          launch={launch}
+          isSelected={isSelected(launch.id)}
+          onSelect={onSelect}
+        />
+      ))}
     </div>
   );
 }
