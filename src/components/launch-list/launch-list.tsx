@@ -1,10 +1,23 @@
-import { useLaunches } from "@/hooks/useLaunches";
+import type { ErrorLike } from "@apollo/client";
+
+import type { Launch } from "@/graphql/types";
 
 import { LaunchCard } from "./launch-card";
 
-export function LaunchList() {
-  const { launches, loading, error, isSelected, onSelect } = useLaunches();
-
+interface LaunchListProps {
+  launches: Launch[];
+  loading: boolean;
+  error?: ErrorLike;
+  isSelected: (id: string) => boolean;
+  onSelect: (id: string) => void;
+}
+export function LaunchList({
+  launches,
+  loading,
+  error,
+  isSelected,
+  onSelect,
+}: LaunchListProps) {
   if (loading && !launches) return <p>Loading launches...</p>;
   if (error) return <p>Error: {error.message}</p>;
 

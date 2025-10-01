@@ -8,7 +8,6 @@ import { formatDate } from "@/utils/formatDate";
 import { LaunchEnergyIndicator } from "./energy-indicator";
 import { LaunchHeader } from "./header";
 import { SelectionIndicator } from "./selection-indicator";
-import { LaunchStatusBadge } from "./status-badge";
 
 interface LaunchCardProps {
   launch: Launch;
@@ -33,13 +32,11 @@ export const LaunchCard = ({
 
     <LaunchHeader launch={launch} />
 
-    <CardContent className="space-y-3">
+    <CardContent className="flex flex-col gap-3">
       <div className="flex items-center gap-2 text-sm text-muted-foreground">
         <Calendar className="size-4" />
         <span>{formatDate(launch.launch_date_utc)}</span>
       </div>
-
-      <LaunchStatusBadge success={launch.launch_success} />
 
       <Separator />
 

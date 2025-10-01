@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { ApolloProvider } from "@apollo/client/react";
 
 import { client } from "./lib/apollo.ts";
-import App from "./App.tsx";
+import App from "./app.tsx";
 
 import "./index.css";
 

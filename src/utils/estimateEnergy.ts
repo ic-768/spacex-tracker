@@ -11,14 +11,19 @@ import type { Launch } from "@/graphql/types";
  * Returns the value rounded to 2 decimal places.
  */
 export const estimateEnergy = (launch: Launch) => {
-  // TODO: Many rockets have the same mass and I can't find a value for fuel mass in the API.
   if (!launch?.rocket?.rocket?.mass?.kg) return null;
 
-  const rocketMassKg = launch.rocket?.rocket?.mass?.kg;
+  // TODO: Many rockets have the same mass and I can't find a value for fuel mass in the API.
+  // I'm adding this randomizer just for demo purposes
+  let rocketMassKg = launch.rocket?.rocket?.mass?.kg;
+  if (rocketMassKg === 549054) rocketMassKg *= Math.random();
+
   const fuelMassKg = 15 * rocketMassKg;
   const totalMassKg = rocketMassKg + fuelMassKg;
   const fuelForTotalMassKg = 15 * totalMassKg;
   const energyJoules = fuelForTotalMassKg * 1.35e7;
+
   const energyGJ = energyJoules / 1e9;
+
   return energyGJ.toFixed(2);
 };
