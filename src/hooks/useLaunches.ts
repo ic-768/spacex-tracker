@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client/react";
 
 import type { GetLaunchesData } from "@/graphql/types";
-import { estimateEnergy } from "@/utils/estimateEnergy";
+import { aggregateEnergy, aggregateMass } from "@/utils/aggregation";
 
 import { GET_LAUNCHES } from "../graphql/queries/launches";
 
@@ -9,7 +9,7 @@ import { useSelection } from "./useSelection";
 
 /**
  * Fetches SpaceX launches using Apollo Client.
- * Provides selection management hooks and total energy for selected launches.
+ * Provides selection management hooks and stats for selected launches.
  */
 export function useLaunches(limit = 20) {
   const { data, loading, error } = useQuery<GetLaunchesData>(GET_LAUNCHES, {
@@ -17,20 +17,30 @@ export function useLaunches(limit = 20) {
   });
 
   const launches = data?.launches ?? [];
-
   const { selection, setSelection, onSelect, isSelected } = useSelection();
 
-  const totalEnergy = launches
-    .filter((launch) => selection.includes(launch.id))
-    .reduce((sum, launch) => sum + estimateEnergy(launch), 0);
+  const totalEnergy = aggregateEnergy(
+    launches.filter((launch) => selection.includes(launch.id)),
+  );
+
+  const totalPayloadMass = aggregateMass(
+    launches.filter((launch) => selection.includes(launch.id)),
+  );
 
   return {
-    launches,
-    loading,
-    error,
-    totalEnergy,
-    isSelected,
-    onSelect,
-    setSelection,
+    launchFetch: {
+      launches,
+      loading,
+      error,
+    },
+    launchSelection: {
+      isSelected,
+      onSelect,
+      setSelection,
+    },
+    aggregatedStats: {
+      totalEnergy,
+      totalPayloadMass,
+    },
   };
 }
