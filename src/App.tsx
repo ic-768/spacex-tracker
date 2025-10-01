@@ -39,7 +39,7 @@ function App() {
             <RocketUsage rocketUsage={launchesByRocket} />
           </div>
           <EnergyUsage data={energyByRocket} />
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-4">
             <StatPanel statName="Total Energy" totalStat={totalEnergy} />
             <StatPanel statName="Total Mass" totalStat={totalPayloadMass} />
           </div>

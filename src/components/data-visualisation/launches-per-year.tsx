@@ -13,9 +13,9 @@ interface LaunchesPerYearProps {
 
 export const LaunchesPerYear = ({ launchesPerYear }: LaunchesPerYearProps) => {
   return (
-    <div className="flex-1">
-      <h3 className="text-lg font-semibold mb-2">Launches Per Year</h3>
-      <ResponsiveContainer width="100%" height={300}>
+    <div className="flex-1 flex flex-col gap-2">
+      <h3 className="text-lg font-semibold">Launches Per Year</h3>
+      <ResponsiveContainer height={300}>
         <LineChart data={launchesPerYear}>
           <XAxis dataKey="year" />
           <YAxis />
