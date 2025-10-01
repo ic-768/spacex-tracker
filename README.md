@@ -10,7 +10,9 @@
 ├─ /hooks            # Custom React hooks 
 ├─ /lib              # Core infrastructure & app-level utilities
 ├─ /utils            # Pure domain logic / helper functions
-├─ App.tsx           # Root component
+├─ constants.ts      # App-wide constants
+├─ app.tsx           # Root component
 ├─ main.tsx          # App entry point
 ├─ index.css         # Global styles
 ```
+
