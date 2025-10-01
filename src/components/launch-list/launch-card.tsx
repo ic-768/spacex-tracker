@@ -21,6 +21,7 @@ export const LaunchCard = ({
   onSelect,
 }: LaunchCardProps) => (
   <Card
+    as="button"
     onClick={() => onSelect(launch.id)}
     className={`relative gap-1 cursor-pointer transition-all duration-200 hover:shadow-lg ${
       isSelected
