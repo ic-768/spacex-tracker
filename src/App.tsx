@@ -2,8 +2,8 @@ import { EnergyUsage } from "./components/data-visualisation/energy-usage";
 import { LaunchesPerYear } from "./components/data-visualisation/launches-per-year";
 import { RocketUsage } from "./components/data-visualisation/rocket-usage";
 import { LaunchList } from "./components/launch-list/launch-list";
+import { SelectionButtons } from "./components/selection-buttons";
 import { StatPanel } from "./components/stat-panel";
-import { Button } from "./components/ui/button";
 import { useLaunches } from "./hooks/useLaunches";
 
 function App() {
@@ -43,12 +43,10 @@ function App() {
             <StatPanel statName="Total Energy" totalStat={totalEnergy} />
             <StatPanel statName="Total Mass" totalStat={totalPayloadMass} />
           </div>
-          <div className="w-full flex justify-center gap-4">
-            <Button onClick={onSelectAll}>Select All</Button>
-            <Button onClick={onClearSelection} variant="destructive">
-              Clear All
-            </Button>
-          </div>
+          <SelectionButtons
+            onClearSelection={onClearSelection}
+            onSelectAll={onSelectAll}
+          />
         </div>
       </div>
     </div>
